@@ -9,6 +9,6 @@ urlpatterns = [
     path("chat", views.chat, name="chat"),
     path("contact", views.contact, name="contact"),
     path("login",views.login,name="login"),
-    path("register",views.register,name="register")
+    path("registration",views.registration,name="registration")
 ]
 

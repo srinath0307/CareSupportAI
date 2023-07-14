@@ -20,8 +20,9 @@ def chat(request):
 def contact(request):
     return render(request, "Medilab/contact.html")
 
-def register(request):
-    return render(request,"Medilab/register.html")
+def registration(request):
+    return render(request,"Medilab/registeration.html")
 
 def login(request):
     return render(request,"Medilab/login.html")
+
