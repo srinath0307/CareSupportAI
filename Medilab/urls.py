@@ -8,5 +8,7 @@ urlpatterns = [
     path("nearby_hosp", views.nearby_hosp, name="nearby_hosp"),
     path("chat", views.chat, name="chat"),
     path("contact", views.contact, name="contact"),
+    path("login",views.login,name="login"),
+    path("register",views.register,name="register")
 ]
 
