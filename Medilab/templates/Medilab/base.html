@@ -59,11 +59,14 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-        <a href="{% url 'book_an_appointment' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-            Appointment</a>
-        <a href="{% url 'chat' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Chat With</span>
-            Eve</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="appointment-btn scrollto">Logout</a>
+        {% else %}
+            <a href="{% url 'registration' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Create an</span>
+                Account</a>
+            <a href="{% url 'login' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span>
+            </a>
+        {% endif %}
 
     </div>
 </header><!-- End Header -->

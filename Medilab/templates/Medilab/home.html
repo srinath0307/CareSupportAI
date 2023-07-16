@@ -5,10 +5,14 @@
 
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
+        {% if user.is_authenticated %}
+        <h1>Welcome {{ user.first_name }}</h1>
+        {% else %}
         <h1>Welcome to CareSupportAI</h1>
+        {% endif %}
         <h2>We are team of talented designers making websites with Bootstrap</h2>
-        <a href="{% url 'login' %}" class="btn-get-started scrollto">Sign In</a>
-        <a href="{% url 'registration' %}" class="btn-get-started scrollto">Sign Up</a>
+        <a href="{% url 'book_an_appointment' %}" class="btn-get-started scrollto">Book an Appointment</a>
+        <a href="{% url 'chat' %}" class="btn-get-started scrollto">Chat with Eve</a>
     </div>
 </section><!-- End Hero -->
 
