@@ -35,13 +35,13 @@ def registration(request):
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
-                messages.error(request,"Username already taken")
+                messages.warning(request,"Username already taken")
                 return redirect('/registration')
             elif(User.objects.filter(email=email).exists()):
-                messages.error(request,"Email already taken")
+                messages.warning(request,"Email already taken")
                 return redirect('/registration')
-            elif(User.objects.filter(mobile=mobile).exists()):
-                messages.error(request,"Mobile number already taken")
+            elif(Registration.objects.filter(mobile=mobile).exists()):
+                messages.warning(request,"Mobile number already taken")
                 return redirect('/registration')
             else:
                 user = User.objects.create_user(username=username, email=email, password=password1, first_name=first_name, last_name=last_name)
@@ -49,9 +49,8 @@ def registration(request):
                 New_user.save()
                 user.save()
                 messages.success(request,"Your account has been created successfully")
-
         else:
-            messages.error(request,"Passwords not matching")
+            messages.warning(request,"Passwords not matching")
             return redirect('/registration')
 
         return redirect('/login')
