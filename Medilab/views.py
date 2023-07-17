@@ -35,19 +35,23 @@ def registration(request):
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
-                messages.warning(request,"Username taken")
+                messages.error(request,"Username already taken")
                 return redirect('/registration')
             elif(User.objects.filter(email=email).exists()):
-                messages.warning(request,"Email already taken")
+                messages.error(request,"Email already taken")
+                return redirect('/registration')
+            elif(User.objects.filter(mobile=mobile).exists()):
+                messages.error(request,"Mobile number already taken")
                 return redirect('/registration')
             else:
                 user = User.objects.create_user(username=username, email=email, password=password1, first_name=first_name, last_name=last_name)
                 New_user = Registration(first_name=first_name, last_name=last_name, username=username, email=email, password=password1, mobile=mobile)
                 New_user.save()
                 user.save()
-                messages.success(request,"user created")
+                messages.success(request,"Your account has been created successfully")
+
         else:
-            messages.warning(request,"not matching")
+            messages.error(request,"Passwords not matching")
             return redirect('/registration')
 
         return redirect('/login')
@@ -65,7 +69,7 @@ def login(request):
             auth.login(request,user)
             return redirect("/")
         else:
-            messages.error(request,'invalid credentials')
+            messages.error(request,'Invalid credentials')
             return redirect('/login')
     else:
         return render(request,"Medilab/login.html")
