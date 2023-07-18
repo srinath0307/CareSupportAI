@@ -9,6 +9,21 @@
 </head>
 {% block content %}
     <div class="main">
+        {% for message in messages %}
+            <div class="alert" style="padding-left: 340px;padding-right:340px;">
+                {% if message.status == 'success' %}
+                    <div style="text-align: center" class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                         role="alert">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% else %}
+                    <div style="text-align: center" class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                         role="alert">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
@@ -19,7 +34,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form action = '{% url 'login' %}' method="POST" class="register-form" id="login-form">
+                        <form action='{% url 'login' %}' method="POST" class="register-form" id="login-form">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
