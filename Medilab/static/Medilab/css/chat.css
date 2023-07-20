@@ -1,15 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-*{
-    margin:0;
-    padding:0;
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
-body{
-    background: #E3F2FD;
+body {
+    background: linear-gradient(30deg, #D6D5A8,#03C988,#2C365D,#3E54AC);
+    background-size: 400% 400%;
+    animation: gradientAnimation 11s ease infinite;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+?.container {
+    background: #4a5464;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 800px;
 }
 
 .chatbot-toggler{
@@ -26,7 +41,7 @@ body{
     cursor:pointer;
     border-radius: 50%;
     color:#fff;
-    background: #724ae8;
+    background: #F7C40B;
 }
 
 .chatbot-toggler span{
@@ -62,7 +77,7 @@ body{
 }
 
 .chatbot header{
-    background: #724ae8;
+    background: #F7C40B;
     padding:16px 0;
     text-align: center;
     position:relative;
@@ -96,22 +111,34 @@ body{
     width:32px;
     color:#fff;
     align-self: flex-end;
-    background: #724ae8;
+    background: #F7C40B;
     text-align: center;
     line-height: 32px;
     border-radius:4px;
     margin:0 10px 7px 0;
 }
- .chatbox .outgoing{
-     margin:20px 0;
-     justify-content: flex-end;
- }
+
+
+.chatbox .outgoing span {
+    height: 32px;
+    width: 32px;
+    color: #fff;
+    align-self: flex-end;
+    background: #2B424A;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    margin-left: 10px;
+
+}
+
+
 .chatbox .chat p{
     color:#fff;
     font-size: 0.95rem;
     padding: 12px 16px;
     border-radius: 10px 10px 0 10px;
-    background: #724ae8;
+    background: #2B424A;
 }
 
 .chatbox .incoming p{
@@ -172,3 +199,11 @@ body{
         display: block;
     }
 }
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
