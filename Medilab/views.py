@@ -76,3 +76,6 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def dashboard(request):
+    return render(request,"Medilab/dashboard.html")
