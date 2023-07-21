@@ -5,31 +5,21 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+
 }
 
-/*body {*/
-/*    background: linear-gradient(30deg, #D6D5A8,#03C988,#2C365D,#3E54AC);*/
-/*    background-size: 400% 400%;*/
-/*    animation: gradientAnimation 11s ease infinite;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    height: 100vh;*/
-/*}*/
-
-
 .container {
-    background: linear-gradient(30deg, #D6D5A8,#03C988,#2C365D,#3E54AC);
+    background: linear-gradient(30deg, #D6D5A8, #03C988, #2C365D, #3E54AC);
     background-size: 400% 400%;
     animation: gradientAnimation 11s ease infinite;
-    display: flex;
-    background: #4a5464;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 10000px;
+    height: 800vh;
 }
+
 
 .chatbot-toggler{
     position: fixed;
