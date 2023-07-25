@@ -68,7 +68,7 @@ def login(request):
             auth.login(request,user)
             return redirect("/")
         else:
-            messages.error(request,'Invalid credentials')
+            messages.warning(request,'Invalid credentials')
             return redirect('/login')
     else:
         return render(request,"Medilab/login.html")

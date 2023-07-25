@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'Medilab/css/chat.css' %}"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    {#    <script src=""></script>#}
 </head>
 <body>
 <div class="container">
@@ -26,11 +27,14 @@
             <ul class="chatbox">
                 <li class="chat incoming">
                     <span class="material-symbols-outlined">smart_toy</span>
-                    <p>Hi there ! <br> I'm Eve, your dedicated virtual health assistant. Whether you have a question, need to monitor your health, or require guidance, I'm here to help you every step of the way.</p>
+                    <p>Hi there ! <br> I'm Eve, your dedicated virtual health assistant. Whether you have a question,
+                        need to monitor your health, or require guidance, I'm here to help you every step of the way.
+                    </p>
                 </li>
                 <br>
                 <li class="chat outgoing">
-                    <p>Hi Eve! It's great to meet you. I'm glad to have a dedicated virtual health assistant to assist me with my healthcare needs.</p>
+                    <p>Hi Eve! It's great to meet you. I'm glad to have a dedicated virtual health assistant to assist
+                        me with my healthcare needs.</p>
                     <span class="material-symbols-outlined">face</span>
                 </li>
             </ul>
@@ -42,4 +46,51 @@
     </div>
 </div>
 </body>
+<script src="jquery-3.6.4.min.js"></script>
+<script>
+    const chatInput = document.querySelector(".chat-input textarea");
+    const sendChatBtn = document.querySelector(".chat-input span");
+    const chatBox = document.querySelector(".chatbox");
+    let userMessage;
+    const createChatLi=(message,className)=>{
+        // create a chat <li> element with passed message and className
+        const chatLi = document.createElement("li");
+        chatLi.classList.add("chat", className);
+        let chatContent=className==="outgoing"?`<p>${message}</p>`:`<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+        chatLi.innerHTML=chatContent;
+        return chatLi;
+    }
+
+    const handleChat = () => {
+        userMessage = chatInput.value.trim();
+        if(!userMessage){
+            return;
+        }
+        chatBox.appendChild(createChatLi(userMessage,"outgoing"));
+        setTimeout(() => {
+            chatBox.appendChild(createChatLi("Typing...","incoming"));
+        }, 500);
+
+    }
+    sendChatBtn.addEventListener("click", handleChat);
+
+    function send_message() {
+        let message = document.getElementById("text_context").value;
+
+        let current_user = document.getElementById("current_username").innerText;
+        $.ajax({
+            type: 'POST',
+            url: '/send_message',
+            data: {
+                username: current_user,
+                message: message,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+
+            }
+        });
+        document.getElementById("text_context").value = "";
+    }
+</script>
 </html>
