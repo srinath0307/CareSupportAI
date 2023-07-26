@@ -35,6 +35,11 @@
     border-radius: 50%;
     color:#fff;
     background: #F7C40B;
+    transition: all 0.2s ease;
+}
+
+.show-chatbot .chatbot-toggler{
+    transform: rotate(90deg);
 }
 
 .chatbot-toggler span{
@@ -60,7 +65,9 @@
     overflow: hidden;
     background:#fff;
     border-radius: 15px;
+    transform-origin:bottom right ;
     box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),0 32px 64px -48px rgba(0,0,0,0.5);
+    transition: all 0.1s ease;
 }
 
 .show-chatbot .chatbot{
@@ -125,7 +132,6 @@
 
 }
 
-
 .chatbox .chat p{
     color:#fff;
     font-size: 0.95rem;
@@ -156,6 +162,7 @@
     width:100%;
     border:none;
     outline:none;
+    max-height:180px;
     font-size: 0.95rem;
     resize: none;
     padding:16px 15px 16px 0;
