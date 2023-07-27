@@ -54,7 +54,7 @@ function send_message() {
 
     $.ajax({
         type: 'POST',
-        url: '/send_message',
+        url: 'send_message',
         data: {
             message: message,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),

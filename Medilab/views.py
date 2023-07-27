@@ -19,7 +19,7 @@ def nearby_hosp(request):
     return render(request, "Medilab/nearby_hosp.html")
 
 def chat(request):
-    return render(request, "Medilab/chat_with_us.html")
+    return render(request, "Medilab/chat_with_us.html",{"username":request.user})
 
 def contact(request):
     return render(request, "Medilab/contact.html")
@@ -85,8 +85,7 @@ def send_message(request):
     if request.method == 'POST':
         username = request.user
         message = request.POST['message']
-        print(username,message)
-        chat_messages = Message(username = username,chat_type="user", date_time=datetime.now, message=message)
+        chat_messages = Message(username = username,chat_type="user", message=message)
         chat_messages.save()
         return JsonResponse({"message":"success"})
 
@@ -95,4 +94,5 @@ def getMessages(request):
     text = []
     for message in chat_details:
         text.append([message.message,message.chat_type])
+    print(text)
     return JsonResponse({"messages":text})
