@@ -14,6 +14,7 @@
 </head>
 <body>
 <div class="container">
+    {% csrf_token %}
     <div>
         <button class="chatbot-toggler">
             <span class="material-symbols-outlined">mode_comment</span>
@@ -39,83 +40,15 @@
                 </li>
             </ul>
             <div class="chat-input">
-                <textarea placeholder="Enter a message...." required></textarea>
-                <span id="send-btn" class="material-symbols-outlined">send</span>
+                <textarea placeholder="Enter a message...." required id="text_context"></textarea>
+                <span id="send-btn" class="material-symbols-outlined" onclick="send_message()">send</span>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script src="jquery-3.6.4.min.js"></script>
-<script>
-    const chatInput = document.querySelector(".chat-input textarea");
-    const sendChatBtn = document.querySelector(".chat-input span");
-    const chatBox = document.querySelector(".chatbox");
-    const chatbotToggler = document.querySelector(".chatbot-toggler");
-    const chatbotCloseBtn = document.querySelector(".close-btn");
-
-    let userMessage;
-    const inputInitHeight = chatInput.scrollHeight;
-    const createChatLi = (message, className) => {
-        // create a chat <li> element with passed message and className
-        const chatLi = document.createElement("li");
-        chatLi.classList.add("chat", className);
-        let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
-        chatLi.innerHTML = chatContent;
-        chatLi.querySelector("p").textContent = message;
-        return chatLi;
-    }
-
-    const handleChat = () => {
-        userMessage = chatInput.value.trim();
-        if (!userMessage) return;
-        chatInput.value = "";
-        chatInput.style.height = `${inputInitHeight}px`;
-
-
-        //Append the chat message
-        chatBox.appendChild(createChatLi(userMessage, "outgoing"));
-        chatBox.scrollTo(0, chatBox.scrollHeight);
-        setTimeout(() => {
-            chatBox.appendChild(createChatLi("Typing...", "incoming"));
-            chatBox.scrollTo(0, chatBox.scrollHeight);
-        }, 500);
-    }
-
-    chatInput.addEventListener("input", () => {
-        chatInput.style.height = `${inputInitHeight}px`;
-        chatInput.style.height = `${chatInput.scrollHeight}px`;
-    });
-
-    chatInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-            e.preventDefault();
-            handleChat();
-        }
-    });
-
-    sendChatBtn.addEventListener("click", handleChat);
-    chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-    chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
-
-    function send_message() {
-        let message = document.getElementById("text_context").value;
-
-        let current_user = document.getElementById("current_username").innerText;
-        $.ajax({
-            type: 'POST',
-            url: '/send_message',
-            data: {
-                username: current_user,
-                message: message,
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            },
-            success: function (data) {
-
-            }
-        });
-        document.getElementById("text_context").value = "";
-    }
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="{% static 'Medilab/js/chat.js' %}"></script>
 </html>
 

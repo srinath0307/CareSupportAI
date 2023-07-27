@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import Registration
-
+from .models import Registration,Message
+from django.http import JsonResponse
+from datetime import datetime
 # Create your views here.
 
 def home(request):
@@ -79,3 +80,19 @@ def logout(request):
 
 def dashboard(request):
     return render(request,"Medilab/dashboard.html")
+
+def send_message(request):
+    if request.method == 'POST':
+        username = request.user
+        message = request.POST['message']
+        print(username,message)
+        chat_messages = Message(username = username,chat_type="user", date_time=datetime.now, message=message)
+        chat_messages.save()
+        return JsonResponse({"message":"success"})
+
+def getMessages(request):
+    chat_details = Message.objects.filter(username = request.user)
+    text = []
+    for message in chat_details:
+        text.append([message.message,message.chat_type])
+    return JsonResponse({"messages":text})

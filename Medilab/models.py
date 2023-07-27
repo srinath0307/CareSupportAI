@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 # Create your models here.
@@ -9,5 +11,14 @@ class Registration(models.Model):
     mobile = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
 
-    def str(self):
+    def __str__(self):
+        return self.username
+
+class Message(models.Model):
+    username = models.CharField(max_length=100)
+    chat_type = models.CharField(max_length=100)
+    date_time = models.DateTimeField(default=datetime.now, blank=False)
+    message = models.CharField(max_length=1000000)
+
+    def __str__(self):
         return self.username

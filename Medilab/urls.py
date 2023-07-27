@@ -11,6 +11,9 @@ urlpatterns = [
     path("dashboard", views.dashboard, name="dashboard"),
     path("login",views.login,name="login"),
     path("registration",views.registration,name="registration"),
-    path("logout",views.logout,name="logout")
+    path("logout",views.logout,name="logout"),
+    path("send_message",views.send_message,name="send_message"),
+    path("getMessages", views.getMessages, name="getMessages"),
 ]
+
 
