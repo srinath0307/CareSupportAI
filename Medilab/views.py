@@ -3,24 +3,25 @@ from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from .models import Registration,Message
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from datetime import datetime
 # Create your views here.
 
 def home(request):
     return render(request, "Medilab/home.html")
-
+@login_required(login_url='/login')
 def services(request):
     return render(request, "Medilab/services.html")
-
+@login_required(login_url='/login')
 def book_an_appointment(request):
     return render(request, "Medilab/book_an_appointment.html")
-
+@login_required(login_url='/login')
 def nearby_hosp(request):
     return render(request, "Medilab/nearby_hosp.html")
-
+@login_required(login_url='/login')
 def chat(request):
     return render(request, "Medilab/chat_with_us.html",{"username":request.user})
-
+@login_required(login_url='/login')
 def contact(request):
     return render(request, "Medilab/contact.html")
 

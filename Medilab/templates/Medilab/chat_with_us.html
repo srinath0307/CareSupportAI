@@ -66,16 +66,15 @@
                     for (var key in response.messages) {
                         let message = response.messages[key][0];
                         let chat_type = response.messages[key][1];
-                        let date_time = response.messages[key][2];
+                        {#let date_time = response.messages[key][2];#}
                         console.log(message);
                         console.log(chat_type);
-                        console.log(date_time);
+                        {#console.log(date_time);#}
 
                         if (chat_type === 'user') {
                             temp = "<p>{{ username }}</p>";
                         } else {
                             temp = "<p>{{ username }}</p>";
-
                         }
                         //console.log(temp);
                         $("#chatbox").append(temp);
