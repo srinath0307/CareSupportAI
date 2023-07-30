@@ -17,8 +17,8 @@ def cringe():
     return li
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-training = pd.read_csv('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/Data/Training.csv')
-testing = pd.read_csv('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/Data/Testing.csv')
+training = pd.read_csv('Medilab/dataset/Data/Training.csv')
+testing = pd.read_csv('Medilab/dataset/Data/Testing.csv')
 cols = training.columns
 print(cols)
 cols = cols[:-1]
@@ -79,7 +79,7 @@ def calc_condition(exp, days):
 
 def getDescription():
     global description_list
-    with open('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/MasterData/symptom_Description.csv') as csv_file:
+    with open('Medilab/dataset/MasterData/symptom_Description.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             _description = {row[0]: row[1]}
@@ -88,7 +88,7 @@ def getDescription():
 
 def getSeverityDict():
     global severityDictionary
-    with open('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/MasterData/symptom_severity.csv') as csv_file:
+    with open('Medilab/dataset/MasterData/symptom_severity.csv') as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         try:
@@ -101,7 +101,7 @@ def getSeverityDict():
 
 def getprecautionDict():
     global precautionDictionary
-    with open('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/MasterData/symptom_precaution.csv') as csv_file:
+    with open('Medilab/dataset/MasterData/symptom_precaution.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             _prec = {row[0]: [row[1], row[2], row[3], row[4]]}
@@ -127,7 +127,7 @@ def check_pattern(dis_list, inp):
 
 
 def sec_predict(symptoms_exp):
-    df = pd.read_csv('C:/Users/srina/Desktop/CareSupportAI-master/Medilab/dataset/Data/Training.csv')
+    df = pd.read_csv('Medilab/dataset/Data/Training.csv')
     X = df.iloc[:, :-1]
     y = df['prognosis']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=20)
