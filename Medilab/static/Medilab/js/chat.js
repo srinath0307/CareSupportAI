@@ -49,10 +49,11 @@ chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
 
 function send_message() {
-    console.log("hello");
-    let message = document.getElementById("text_context").value;
+    console.log(flag,"flag");
 
-    $.ajax({
+    let message = document.getElementById("text_context").value;
+    if(flag===1){
+        $.ajax({
         type: 'POST',
         url: 'send_message',
         data: {
@@ -64,4 +65,13 @@ function send_message() {
         }
     });
     document.getElementById("text_context").value = "";
+    }
+    else{
+        temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
+        answer.append(message);
+        $("#chatbox").append(temp);
+        sending();
+
+    }
+
 }

@@ -54,38 +54,134 @@
 
 
 <script>
+    let flag = 0;
     $(document).ready(function () {
         let temp = "";
-        setInterval(function () {
-            $.ajax({
-                type: 'GET',
-                url: "getMessages",
-                success: function (response) {
-                    console.log(response);
-                    $("#chatbox").empty();
-                    for (var key in response.messages) {
-                        let message = response.messages[key][0];
-                        let chat_type = response.messages[key][1];
-                        {#let date_time = response.messages[key][2];#}
-                        console.log(message);
-                        console.log(chat_type);
-                        {#console.log(date_time);#}
-
-                        if (chat_type === 'user') {
-                            temp = "<p>{{ username }}</p>";
-                        } else {
-                            temp = "<p>{{ username }}</p>";
+        if (flag === 1) {
+            setInterval(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "getMessages",
+                    success: function (response) {
+                        console.log(response.messages);
+                        $("#chatbox").empty();
+                        for (var key in response.messages) {
+                            let message = response.messages[key][0];
+                            let chat_type = response.messages[key][1];
+                            {#let date_time = response.messages[key][2];#}
+                            console.log(message);
+                            console.log(chat_type);
+                            {#console.log(date_time);#}
+                            if (chat_type === 'bot') {
+                                temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + message + "</p> </li><br>";
+                            } else {
+                                temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
+                            }
+                            //console.log(temp);
+                            $("#chatbox").append(temp);
                         }
-                        //console.log(temp);
-                        $("#chatbox").append(temp);
+                    },
+                    error: function (response) {
+                        console.log('An error occured')
                     }
-                },
-                error: function (response) {
-                    alert('An error occured')
-                }
-            });
-        }, 1000);
+                });
+            }, 1000);
+        } else {
+            $("#chatbox").empty();
+            sending();
+        }
     })
 
+    function sending() {
+        let temp;
+        if (flag1 === 0) {
+            if (answer.length === 1) {
+                let match = findMatches(answer[0], disease);
+                for (let i = 0; i < match.length; i++) {
+                    let que = i + ") " + match[i];
+                    temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + que + "</p> </li><br>";
+                    $("#chatbox").append(temp);
+                }
+                let ques = "Select the one you meant (0 - " + ((match.length)-1) + ")";
+                temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + ques + "</p> </li><br>";
+            }
+            else{
+                temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + question[0] + "</p> </li><br>";
+            }
+            $("#chatbox").append(temp);
+            if (question.length === 0) {
+                flag = 1;
+                flag1 = 1;
+            }
+            question.shift();
+        }
+    }
+
+
+</script>
+<script>
+    let question = ["Enter the symptom you are experiencing", "Select the one you meant (0 - 1)", "Okay. From how many days ?"];
+    let answer = [];
+    let flag1 = 0;
+    temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + question[0] + "</p> </li><br>";
+    const disease = ['abdominal_pain', 'abnormal_menstruation', 'acidity', 'acute_liver_failure', 'altered_sensorium', 'anxiety',
+        'back_pain', 'belly_pain', 'blackheads', 'bladder_discomfort', 'blister', 'blood_in_sputum', 'bloody_stool',
+        'blurred_and_distorted_vision', 'breathlessness', 'brittle_nails', 'bruising', 'burning_micturition', 'chest_pain',
+        'chills', 'cold_hands_and_feets', 'coma', 'congestion', 'constipation', 'continuous_feel_of_urine', 'continuous_sneezing',
+        'cough', 'cramps', 'dark_urine', 'dehydration', 'depression', 'diarrhoea', 'dischromic _patches', 'distention_of_abdomen',
+        'dizziness', 'drying_and_tingling_lips', 'enlarged_thyroid', 'excessive_hunger', 'extra_marital_contacts', 'family_history',
+        'fast_heart_rate', 'fatigue', 'fluid_overload', 'fluid_overload.1', 'foul_smell_of urine', 'headache', 'high_fever', 'hip_joint_pain',
+        'history_of_alcohol_consumption', 'increased_appetite', 'indigestion', 'inflammatory_nails', 'internal_itching',
+        'irregular_sugar_level', 'irritability', 'irritation_in_anus', 'itching', 'joint_pain', 'knee_pain', 'lack_of_concentration',
+        'lethargy', 'loss_of_appetite', 'loss_of_balance', 'loss_of_smell', 'malaise', 'mild_fever', 'mood_swings', 'movement_stiffness',
+        'mucoid_sputum', 'muscle_pain', 'muscle_wasting', 'muscle_weakness', 'nausea', 'neck_pain', 'nodal_skin_eruptions', 'obesity',
+        'pain_behind_the_eyes', 'pain_during_bowel_movements', 'pain_in_anal_region', 'painful_walking', 'palpitations', 'passage_of_gases',
+        'patches_in_throat', 'phlegm', 'polyuria', 'prominent_veins_on_calf', 'puffy_face_and_eyes', 'pus_filled_pimples',
+        'receiving_blood_transfusion', 'receiving_unsterile_injections', 'red_sore_around_nose', 'red_spots_over_body', 'redness_of_eyes', 'restlessness', 'runny_nose',
+        'rusty_sputum', 'scurring', 'shivering', 'silver_like_dusting', 'sinus_pressure', 'skin_peeling', 'skin_rash', 'slurred_speech', 'small_dents_in_nails',
+        'spinning_movements', 'spotting_ urination', 'stiff_neck', 'stomach_bleeding', 'stomach_pain', 'sunken_eyes', 'sweating', 'swelled_lymph_nodes', 'swelling_joints',
+        'swelling_of_stomach', 'swollen_blood_vessels', 'swollen_extremeties', 'swollen_legs', 'throat_irritation', 'toxic_look_(typhos)', 'ulcers_on_tongue', 'unsteadiness',
+        'visual_disturbances', 'vomiting', 'watering_from_eyes', 'weakness_in_limbs', 'weakness_of_one_body_side', 'weight_gain', 'weight_loss', 'yellow_crust_ooze',
+        'yellow_urine', 'yellowing_of_eyes', 'yellowish_skin'];
+
+    function findMatches(input, disease) {
+        if (!Array.isArray(disease)) {
+            return [];
+        }
+        const regex = new RegExp(input, 'i'); // 'i' flag makes it case-insensitive
+        const matches = disease.filter(str => regex.test(str));
+        return matches;
+    }
+
+
+</script>
+<script>
+    function send_message() {
+        let message = document.getElementById("text_context").value;
+        var temp;
+        if (flag === 1) {
+            $.ajax({
+                type: 'POST',
+                url: 'send_message',
+                data: {
+                    message: message,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function (data) {
+                    console.log("success");
+                }
+            });
+            document.getElementById("text_context").value = "";
+        } else {
+            temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
+            answer.push(message);
+            if (answer.length === 3) {
+                flag1 = 1;
+                flag = 1;
+            }
+            $("#chatbox").append(temp);
+            sending();
+        }
+    }
 </script>
 </html>
