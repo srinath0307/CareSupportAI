@@ -8,13 +8,19 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 import csv
 import warnings
-li=[]
-count=0
+
+li = []
+count = 0
+
 
 def retCount():
-    return count+1
+    return count + 1
+
+
 def cringe():
     return li
+
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 training = pd.read_csv('Medilab/dataset/Data/Training.csv')
@@ -54,8 +60,6 @@ print(model.score(x_test, y_test))
 importances = clf.feature_importances_
 indices = np.argsort(importances)[::-1]
 features = cols
-
-
 
 severityDictionary = dict()
 description_list = dict()
@@ -149,7 +153,7 @@ def print_disease(node):
     return list(map(lambda x: x.strip(), list(disease)))
 
 
-def tree_to_code(tree, feature_names,a,b,c):
+def tree_to_code(tree, feature_names, a, b, c):
     global num
     tree_ = tree.tree_
     feature_name = [
@@ -256,32 +260,33 @@ def tree_to_code(tree, feature_names,a,b,c):
 
             # confidence_level = (1.0*len(symptoms_present))/len(symptoms_given)
             # print("confidence level is " + str(confidence_level))
-    sample= recurse(0, 1)
-    print(sample,"sample")
+
+    sample = recurse(0, 1)
+    print(sample, "sample")
     return sample
 
 
-def calling(a,b,c):
-    print(a,b,c)
+def calling(a, b, c):
+    print(a, b, c)
     getSeverityDict()
     getDescription()
     getprecautionDict()
-    return tree_to_code(clf, cols,a,b,c)
+    return tree_to_code(clf, cols, a, b, c)
 
 
-def initialize(a,b,c):
+def initialize(a, b, c):
     print("cammmeeeee")
-    var1=a
-    var2=b
-    var3=c
+    var1 = a
+    var2 = b
+    var3 = c
 
 
 def final_count(present_disease):
-    num_days=3
+    num_days = 3
     red_cols = reduced_data.columns
-    print(reduced_data.loc[present_disease].values[0],"reduced_data.loc[present_disease].values[0]",present_disease)
+    print(reduced_data.loc[present_disease].values[0], "reduced_data.loc[present_disease].values[0]", present_disease)
     symptoms_given = red_cols[reduced_data.loc[present_disease].values[0].nonzero()]
-    print("Are you experiencing any ",symptoms_given)
+    print("Are you experiencing any ", symptoms_given)
     return list(symptoms_given)
     #     print(syms, "? : ", end='')
     #     while True:
