@@ -62,6 +62,7 @@
                 $.ajax({
                     type: 'GET',
                     url: "getMessages",
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                     success: function (response) {
                         console.log(response.messages);
                         $("#chatbox").empty();
