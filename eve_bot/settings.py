@@ -51,6 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://caresupportai.azurewebsites.net/']
 ROOT_URLCONF = "eve_bot.urls"
 
 TEMPLATES = [
