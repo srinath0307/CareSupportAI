@@ -103,10 +103,9 @@
                     temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + que + "</p> </li><br>";
                     $("#chatbox").append(temp);
                 }
-                let ques = "Select the one you meant (0 - " + ((match.length)-1) + ")";
+                let ques = "Select the one you meant (0 - " + ((match.length) - 1) + ")";
                 temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + ques + "</p> </li><br>";
-            }
-            else{
+            } else {
                 temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + question[0] + "</p> </li><br>";
             }
             $("#chatbox").append(temp);
@@ -157,7 +156,39 @@
 
 </script>
 <script>
+    let symptom = [];
+    let predicted_disease,description,precaution;
+    let res = 0;
+
+    function putSymptoms() {
+        if (symptom.length === 0) {
+            const temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>You may have " + predicted_disease + "</p> </li><br>";
+            $("#chatbox").append(temp);
+            const temp1 = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + description + "</p> </li><br>";
+            $("#chatbox").append(temp1);
+            const temp2 = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Take following measures : " + precaution + "</p> </li><br>";
+            $("#chatbox").append(temp2);
+            res = 0;
+            return;
+        }
+        const temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Are you facing " + symptom[0] + "</p> </li><br>";
+        $("#chatbox").append(temp);
+        symptom.shift();
+        res = 1;
+    }
+
+    function send_message1() {
+        console.log("working");
+    }
+
     function send_message() {
+        if (res === 1) {
+            let message = document.getElementById("text_context").value;
+            temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
+            $("#chatbox").append(temp);
+            putSymptoms();
+            return;
+        }
         let message = document.getElementById("text_context").value;
         var temp;
         if (flag === 1) {
@@ -177,12 +208,33 @@
             temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
             answer.push(message);
             if (answer.length === 3) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'send_answers',
+                    data: {
+                        message_0: answer[0],
+                        message_1: answer[1],
+                        message_2: answer[2],
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    success: function (data) {
+                        for (let key in data.symptoms_given) {
+                            symptom.push(data.symptoms_given[key]);
+                        }
+                        predicted_disease = data.present_disease;
+                        description = data.description;
+                        precaution = data.precaution;
+                        putSymptoms();
+                    }
+                });
+
                 flag1 = 1;
                 flag = 1;
             }
             $("#chatbox").append(temp);
             sending();
         }
+        document.getElementById("text_context").value = "";
     }
 </script>
 </html>

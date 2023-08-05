@@ -219,7 +219,9 @@ def tree_to_code(tree, feature_names, a, b, c):
             present_disease = print_disease(tree_.value[node])
             red_cols = reduced_data.columns
             symptoms_given = red_cols[reduced_data.loc[present_disease].values[0].nonzero()]
-            return present_disease[0], symptoms_given
+            description=description_list[present_disease[0]]
+            precaution=precautionDictionary[present_disease[0]]
+            return present_disease[0], symptoms_given, description, precaution
             # dis_list=list(symptoms_present)
             # if len(dis_list)!=0:
             #     print("symptoms present  " + str(list(symptoms_present)))

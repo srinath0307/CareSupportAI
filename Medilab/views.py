@@ -105,15 +105,28 @@ def dashboard(request):
 def send_message(request):
     li = ["what are you experiencing", "for how many days", "searches related to input"]
     answers = ["I am experiencing fever", "for 2 days", "fever,headache,weakness"]
-    present_disease, symptoms_given = calling("fever", 1, 2)
-    symptoms_given = list(symptoms_given)
-    print(present_disease, list(symptoms_given))
     if request.method == 'POST':
         username = request.user
         message = request.POST['message']
         chat_messages = Message(username=username, chat_type="user", message=message)
         chat_messages.save()
         return JsonResponse({"message": "success"})
+
+
+def send_answers(request):
+    if request.method == 'POST':
+        username = request.user
+        message = request.POST['message_0']
+        message1 = request.POST['message_1']
+        message2 = request.POST['message_2']
+        present_disease, symptoms_given, description, precaution = calling(message, int(message1), int(message2))
+        symptoms_given = list(symptoms_given)
+        print(present_disease, list(symptoms_given))
+        # chat_messages = Message(username=username, chat_type="user", message=message)
+        # chat_messages.save()
+        return JsonResponse(
+            {"present_disease": present_disease, "symptoms_given": symptoms_given, "description": description,
+             "precaution": precaution})
 
 
 def getMessages(request):

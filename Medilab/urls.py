@@ -14,6 +14,7 @@ urlpatterns = [
     path("logout",views.logout,name="logout"),
     path("send_message",views.send_message,name="send_message"),
     path("getMessages", views.getMessages, name="getMessages"),
+    path("send_answers", views.send_answers, name="send_answers"),
 ]
 
 
