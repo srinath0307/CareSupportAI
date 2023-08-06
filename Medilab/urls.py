@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views
+from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -8,15 +8,17 @@ urlpatterns = [
     path("nearby_hosp", views.nearby_hosp, name="nearby_hosp"),
     path("chat", views.chat, name="chat"),
     path("contact", views.contact, name="contact"),
-    path("dashboard", views.dashboard, name="dashboard"),
-    path("login",views.login,name="login"),
-    path("registration",views.registration,name="registration"),
-    path("logout",views.logout,name="logout"),
-    path("send_message",views.send_message,name="send_message"),
+    path("livechat", views.livechat, name="livechat"),
+    path('<str:room>/', views.room, name='room'),
+    path('checkview', views.checkview, name='checkview'),
+    path('send', views.send, name='send'),
+    path('getValue/<str:room>/', views.getValue, name='getValue'),
+    path("login", views.login, name="login"),
+    path("registration", views.registration, name="registration"),
+    path("logout", views.logout, name="logout"),
+    path("send_message", views.send_message, name="send_message"),
     path("getMessages", views.getMessages, name="getMessages"),
     path("send_answers", views.send_answers, name="send_answers"),
     path("bmi", views.bmi, name="bmi"),
     path("faq", views.faq, name="faq"),
 ]
-
-

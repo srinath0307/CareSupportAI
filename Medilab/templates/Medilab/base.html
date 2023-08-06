@@ -52,7 +52,7 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
         {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}" class="appointment-btn scrollto">Dashboard</a>
+            <a href="{% url 'livechat' %}" class="appointment-btn scrollto">Live Chat</a>
             <a href="{% url 'logout' %}" class="appointment-btn scrollto">Logout</a>
         {% else %}
             <a href="{% url 'registration' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Create an</span>

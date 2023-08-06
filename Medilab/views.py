@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Registration, Message
+from .models import Registration, Message, Room, LiveChat
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from Medilab.dataset.chatbot import calling, final_count
@@ -98,8 +98,17 @@ def logout(request):
     return redirect('/')
 
 
-def dashboard(request):
-    return render(request, "Medilab/dashboard.html")
+def livechat(request):
+    print(request.user)
+    previous_history = LiveChat.objects.filter(user=request.user)
+    recent_rooms = []
+    for data in previous_history:
+        if (data.room not in recent_rooms):
+            recent_rooms.append(data.room)
+    print(recent_rooms)
+    return render(request, "Medilab/livechat.html",{
+        'recent_rooms':recent_rooms
+    })
 
 
 def send_message(request):
@@ -150,3 +159,42 @@ def bmi(request):
 @login_required(login_url='/login')
 def faq(request):
     return render(request, "Medilab/faq.html")
+
+
+def room(request, room):
+    username = request.GET.get('username')
+    room_details = Room.objects.get(name=room)
+    return render(request, 'Medilab/room.html', {
+        'username': username,
+        'room': room,
+        'room_details': room_details,
+
+    })
+
+
+def checkview(request):
+    room = request.POST['room_name']
+    username = request.POST['username']
+
+    if Room.objects.filter(name=room).exists():
+        return redirect('/' + room + '/?username=' + username)
+    else:
+        new_room = Room.objects.create(name=room)
+        new_room.save()
+        return redirect('/' + room + '/?username=' + username)
+
+
+def send(request):
+    values = request.POST['values']
+    username = request.POST['username']
+    room_id = request.POST['room_id']
+    print(values, username, room_id)
+    new_message = LiveChat.objects.create(values=values, user=username, room=room_id)
+    new_message.save()
+    return HttpResponse('Message sent successfully')
+
+
+def getValue(request, room):
+    room_details = Room.objects.get(name=room)
+    result = LiveChat.objects.filter(room=room_details.name)
+    return JsonResponse({"result": list(result.values())})
