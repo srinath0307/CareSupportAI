@@ -159,9 +159,24 @@
     let symptom = [];
     let predicted_disease, description, precaution;
     let res = 0;
+    let responses = [];
 
     function putSymptoms() {
         if (symptom.length === 0) {
+            let ctr = 0;
+            for (let i = 0; i < responses.length; i++) {
+                if (responses[i] === 'no') {
+                    ctr++;
+                }
+            }
+            if (ctr >= 2) {
+                const temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>It might not be that bad but you should take necessary precautions</p> </li><br>";
+                $("#chatbox").append(temp);
+                const temp2 = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Take following measures : " + precaution + "</p> </li><br>";
+                $("#chatbox").append(temp2);
+                res = 0;
+                return;
+            }
             const temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>You may have " + predicted_disease + "</p> </li><br>";
             $("#chatbox").append(temp);
             const temp1 = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + description + "</p> </li><br>";
@@ -186,6 +201,7 @@
             let message = document.getElementById("text_context").value;
             temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
             $("#chatbox").append(temp);
+            responses.push(message);
             putSymptoms();
             return;
         }
