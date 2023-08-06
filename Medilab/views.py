@@ -140,3 +140,13 @@ def getMessages(request):
     # text[0].append(l[-1])
 
     return JsonResponse({"messages": text})
+
+
+@login_required(login_url='/login')
+def bmi(request):
+    return render(request, "Medilab/bmi.html")
+
+
+@login_required(login_url='/login')
+def faq(request):
+    return render(request, "Medilab/faq.html")

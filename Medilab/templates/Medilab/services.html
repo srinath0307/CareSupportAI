@@ -1,10 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CHAT WITH EVE 24/7</title>
-</head>
-<body>
+{% extends 'Medilab/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <br>
+                <br>
+                <br>
+                <h2>Services</h2>
+                <p>CaresupportAI provides personalized healthcare support and guidance through interactive chatbots and
+                    advanced AI algorithms. Our mission is to empower users with accurate health predictions and
+                    tailored precautionary measures, promoting proactive health management.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4><a href="">Personalised virtual healthcare chatbot </a></h4>
+                        <p>CaresupportAI chatbot analyzes symptoms, predicts illnesses, provides health monitoring,
+                            education.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-pills"></i></div>
+                        <h4><a href="">Hospitals in the vicinity</a></h4>
+                        <p>CaresupportAI offers geolocation services and advanced search algorithms for medical
+                            assistance.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                        <h4><a href="">Medical insurance</a></h4>
+                        <p>Tailored medical insurance plans that cater to individual healthcare needs.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-dna"></i></div>
+                        <h4><a href="{% url 'bmi' %}">BMI calculator</a></h4>
+                        <p>The body mass index (BMI) is a measure that uses your height and weight to work out if your
+                            weight is healthy.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                        <h4><a href="">Live chat</a></h4>
+                        <p>Live chat with healthcare professionals to make your queries answered and to give the best
+                            outcome</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                        <h4><a href="{% url 'faq' %}">Frequently asked questions</a></h4>
+                        <p>The Frequently Asked Questions (FAQ) section that addresses common queries and concerns from
+                            users, providing comprehensive and informative answers to help them better understand the
+                            platform's services, features, and how to make the most of their personalized healthcare
+                            support..</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+{% endblock %}

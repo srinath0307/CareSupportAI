@@ -3,726 +3,259 @@
 
 {% block content %}
 
-<section id="hero" class="d-flex align-items-center">
-    <div class="container">
-        {% if user.is_authenticated %}
-        <h1>Welcome {{ user.first_name }}</h1>
-        {% else %}
-        <h1>Welcome to CareSupportAI</h1>
-        {% endif %}
-        <h2>"Caring for you, powered by AI"</h2>
-        <a href="{% url 'book_an_appointment' %}" class="btn-get-started scrollto">Book an Appointment</a>
-        <a href="{% url 'chat' %}" class="btn-get-started scrollto">Chat with Eve</a>
-    </div>
-</section><!-- End Hero -->
-
-<main id="main">
-
-    <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
-
+    <section id="hero" class="d-flex align-items-center">
         <div class="container">
+            {% if user.is_authenticated %}
+                <h1>Welcome {{ user.first_name }}</h1>
+            {% else %}
+                <h1>Welcome to CareSupportAI</h1>
+            {% endif %}
+            <h2>"Caring for you, powered by AI"</h2>
+            <a href="{% url 'book_an_appointment' %}" class="btn-get-started scrollto">Book an Appointment</a>
+            <a href="{% url 'chat' %}" class="btn-get-started scrollto">Chat with Eve</a>
+        </div>
+    </section><!-- End Hero -->
 
-            <div class="row">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="content">
-                        <h3>Why Choose CareSupportAI?</h3>
-                        <p>
-                            CareSupportAI provides personalized healthcare support using artificial intelligence, utilizing advanced chatbot UI and natural language processing algorithms. Its decision tree classifier, severity assessment, and precautionary measures ensure reliable health insights. As a dedicated virtual health assistant, CareSupportAI guides and monitors users' health journeys.
-                        </p>
-                        <div class="text-center">
-                            <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+    <main id="main">
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-4 d-flex align-items-stretch">
+                        <div class="content">
+                            <h3>Why Choose CareSupportAI?</h3>
+                            <p>
+                                CareSupportAI provides personalized healthcare support using artificial intelligence,
+                                utilizing advanced chatbot UI and natural language processing algorithms. Its decision
+                                tree classifier, severity assessment, and precautionary measures ensure reliable health
+                                insights. As a dedicated virtual health assistant, CareSupportAI guides and monitors
+                                users' health journeys.
+                            </p>
+                            <div class="text-center">
+                                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-8 d-flex align-items-stretch">
+                        <div class="icon-boxes d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="bx bx-receipt"></i>
+                                        <h4>24/7 Health Support</h4>
+                                        <p>Your trusted healthcare companion, available round-the-clock.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="bx bx-cube-alt"></i>
+                                        <h4>Emergency Assistance</h4>
+                                        <p>A crucial service for life-threatening situations.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="bx bx-images"></i>
+                                        <h4>Personalised health recommendation</h4>
+                                        <p>Receive personalized health recommendations with our virtual health
+                                            assistant, Eve.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End .content-->
+                    </div>
                 </div>
-                <div class="col-lg-8 d-flex align-items-stretch">
-                    <div class="icon-boxes d-flex flex-column justify-content-center">
-                        <div class="row">
-                            <div class="col-xl-4 d-flex align-items-stretch">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <i class="bx bx-receipt"></i>
-                                    <h4>24/7 Health Support</h4>
-                                    <p>Your trusted healthcare companion, available round-the-clock.</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 d-flex align-items-stretch">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <i class="bx bx-cube-alt"></i>
-                                    <h4>Emergency Assistance</h4>
-                                    <p>A crucial service for life-threatening situations.</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 d-flex align-items-stretch">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <i class="bx bx-images"></i>
-                                    <h4>Personalised health recommendation</h4>
-                                    <p>Receive personalized health recommendations with our virtual health assistant, Eve.</p>
-                                </div>
-                            </div>
+
+            </div>
+        </section><!-- End Why Us Section -->
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+                        <a href="https://youtu.be/5tLZfT9T5nQ" class="glightbox play-btn mb-4"></a>
+                    </div>
+
+                    <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+                        <h3>Explore the Key Features: Unveiling the Power Within</h3>
+                        <p>CaresupportAI uses conversational chatbots to diagnose health issues using advanced natural
+                            language processing algorithms and decision tree classifiers. Eve offers personalized
+                            precautionary measures based on age, gender, and medical history, improving health
+                            management. It offers user-friendly registration and secure registration for personalized
+                            health recommendations.</p>
+
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                            <h4 class="title"><a href="">Symptom-Based Disease Prediction</a></h4>
+                            <p class="description">CaresupportAI facilitates users in identifying health issues using
+                                conversational chatbots, utilizing advanced natural language processing algorithms and
+                                decision tree classifiers for accurate health predictions.</p>
                         </div>
-                    </div><!-- End .content-->
-                </div>
-            </div>
 
-        </div>
-    </section><!-- End Why Us Section -->
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-gift"></i></div>
+                            <h4 class="title"><a href="">Personalized Precautionary Measures</a></h4>
+                            <p class="description">Eve provides personalized precautionary measures for diseases, based
+                                on user's age, gender, and medical history, improving health management experience.</p>
+                        </div>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container-fluid">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-atom"></i></div>
+                            <h4 class="title"><a href="">User-Friendly and Secure Registration</a></h4>
+                            <p class="description">CareSupportAI allows users to access personalized health
+                                recommendations and engage in conversations, using a user-friendly registration process
+                                and security measures.</p>
+                        </div>
 
-            <div class="row">
-                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
-                    <a href="https://youtu.be/5tLZfT9T5nQ" class="glightbox play-btn mb-4"></a>
-                </div>
-
-                <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                    <h3>Explore the Key Features: Unveiling the Power Within</h3>
-                    <p>CaresupportAI uses conversational chatbots to diagnose health issues using advanced natural language processing algorithms and decision tree classifiers. Eve offers personalized precautionary measures based on age, gender, and medical history, improving health management. It offers user-friendly registration and secure registration for personalized health recommendations.</p>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                        <h4 class="title"><a href="">Symptom-Based Disease Prediction</a></h4>
-                        <p class="description">CaresupportAI facilitates users in identifying health issues using conversational chatbots, utilizing advanced natural language processing algorithms and decision tree classifiers for accurate health predictions.</p>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bx-gift"></i></div>
-                        <h4 class="title"><a href="">Personalized Precautionary Measures</a></h4>
-                        <p class="description">Eve provides personalized precautionary measures for diseases, based on user's age, gender, and medical history, improving health management experience.</p>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bx-atom"></i></div>
-                        <h4 class="title"><a href="">User-Friendly and Secure Registration</a></h4>
-                        <p class="description">CareSupportAI allows users to access personalized health recommendations and engage in conversations, using a user-friendly registration process and security measures.</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="count-box">
-                        <i class="fas fa-user-md"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p>Doctors</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-                    <div class="count-box">
-                        <i class="far fa-hospital"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p>Departments</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                    <div class="count-box">
-                        <i class="fas fa-flask"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p>Research Labs</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                    <div class="count-box">
-                        <i class="fas fa-award"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p>Awards</p>
                     </div>
                 </div>
 
             </div>
+        </section><!-- End About Section -->
 
-        </div>
-    </section><!-- End Counts Section -->
+        <!-- ======= Counts Section ======= -->
+        <section id="counts" class="counts">
+            <div class="container">
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Services</h2>
-                <p>CaresupportAI provides personalized healthcare support and guidance through interactive chatbots and advanced AI algorithms. Our mission is to empower users with accurate health predictions and tailored precautionary measures, promoting proactive health management.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                        <h4><a href="">Personalised virtual healthcare chatbot </a></h4>
-                        <p>CaresupportAI chatbot analyzes symptoms, predicts illnesses, provides health monitoring, education.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-pills"></i></div>
-                        <h4><a href="">Hospitals in the vicinity</a></h4>
-                        <p>CaresupportAI offers geolocation services and advanced search algorithms for medical assistance.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-hospital-user"></i></div>
-                        <h4><a href="">Medical insurance</a></h4>
-                        <p>Tailored medical insurance plans that cater to individual healthcare needs.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-dna"></i></div>
-                        <h4><a href="">Nemo Enim</a></h4>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-wheelchair"></i></div>
-                        <h4><a href="">Dele cardo</a></h4>
-                        <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-notes-medical"></i></div>
-                        <h4><a href="">Divera don</a></h4>
-                        <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Make an Appointment</h2>
-                <p>CaresupportAI offers users the convenience of making medical appointments through an intuitive and user-friendly interface, connecting them with healthcare providers and enabling seamless scheduling for personalized consultations and treatments.</p>
-            </div>
-
-            <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
                 <div class="row">
-                    <div class="col-md-4 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="count-box">
+                            <i class="fas fa-user-md"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p>Doctors</p>
+                        </div>
                     </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                               data-rule="email" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                        <div class="count-box">
+                            <i class="far fa-hospital"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p>Departments</p>
+                        </div>
                     </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone"
-                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <i class="fas fa-flask"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p>Research Labs</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group mt-3">
-                        <input type="datetime" name="date" class="form-control datepicker" id="date"
-                               placeholder="Appointment Date" data-rule="minlen:4"
-                               data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <i class="fas fa-award"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p>Awards</p>
+                        </div>
                     </div>
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="department" id="department" class="form-select">
-                            <option value="">Select Department</option>
-                            <option value="Department 1">Department 1</option>
-                            <option value="Department 2">Department 2</option>
-                            <option value="Department 3">Department 3</option>
-                        </select>
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="doctor" id="doctor" class="form-select">
-                            <option value="">Select Doctor</option>
-                            <option value="Doctor 1">Doctor 1</option>
-                            <option value="Doctor 2">Doctor 2</option>
-                            <option value="Doctor 3">Doctor 3</option>
-                        </select>
-                        <div class="validate"></div>
-                    </div>
+
                 </div>
 
-                <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-                    <div class="validate"></div>
-                </div>
-                <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-                </div>
-                <div class="text-center">
-                    <button type="submit">Make an Appointment</button>
-                </div>
-            </form>
-
-        </div>
-    </section><!-- End Appointment Section -->
-
-    <!-- ======= Departments Section ======= -->
-    <section id="departments" class="departments">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Departments</h2>
-                <p>CaresupportAI offers comprehensive healthcare support through various specialized departments, including General Medicine, Pediatrics, Dermatology, Cardiology, Mental Health, and Women's Health, providing users with expert advice and personalized recommendations for their specific health needs.</p>
             </div>
+        </section><!-- End Counts Section -->
 
-            <div class="row gy-4">
-                <div class="col-lg-3">
-                    <ul class="nav nav-tabs flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiology</a>
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>The Frequently Asked Questions (FAQ) section that addresses common queries and concerns from
+                        users, providing comprehensive and informative answers to help them better understand the
+                        platform's services, features, and how to make the most of their personalized healthcare
+                        support..</p>
+                </div>
+
+                <div class="faq-list">
+                    <ul>
+                        <li data-aos="fade-up">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                                                                           data-bs-target="#faq-list-1">What is
+                            CaresupportAI? <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                                <p>
+                                    CaresupportAI is a cutting-edge healthcare platform that utilizes interactive
+                                    chatbots and advanced AI algorithms to deliver personalized healthcare support and
+                                    guidance to users.
+                                </p>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurology</a>
+
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                           data-bs-target="#faq-list-2"
+                                                                           class="collapsed">How does CaresupportAI
+                            work? <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    CaresupportAI's chatbots engage in conversational interactions with users, analyzing
+                                    their symptoms and health-related inputs. The platform employs decision tree
+                                    classifiers to predict potential health issues and offers personalized
+                                    recommendations.
+                                </p>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hepatology</a>
+
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                           data-bs-target="#faq-list-3"
+                                                                           class="collapsed">Are the health predictions
+                            accurate?<i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Yes, CaresupportAI's AI algorithms are trained on a vast dataset of symptoms and
+                                    diseases, making the predictions highly accurate. However, it's essential to consult
+                                    a healthcare professional for a definitive diagnosis.
+                                </p>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatrics</a>
+
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                           data-bs-target="#faq-list-4"
+                                                                           class="collapsed">Is my data secure with
+                            CaresupportAI?<i
+                                    class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Absolutely! CaresupportAI takes data privacy and security seriously. All user data
+                                    is encrypted and stored following industry-standard protocols to ensure maximum
+                                    protection.
+                                </p>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Eye Care</a>
+
+                        <li data-aos="fade-up" data-aos-delay="400">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                           data-bs-target="#faq-list-5"
+                                                                           class="collapsed">Can I get personalized
+                            healthcare recommendations? <i
+                                    class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Yes, CaresupportAI provides personalized healthcare recommendations based on
+                                    individual symptoms, medical history, and other relevant factors.
+                                </p>
+                            </div>
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-9">
-                    <div class="tab-content">
-                        <div class="tab-pane active show" id="tab-1">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>General Medicine</h3>
-                                    <p class="fst-italic">General Medicine is a broad medical specialty encompassing the diagnosis, treatment, and management of various non-surgical health conditions, providing comprehensive care and promoting overall well-being for patients across different age groups and medical concerns.o</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-2">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Pediatrics</h3>
-                                    <p class="fst-italic">Pediatrics is a branch of medical care focused on the health and well-being of infants, children, and adolescents, providing specialized healthcare services tailored to their unique needs and developmental stages, with a strong emphasis on disease prevention, early detection, and comprehensive medical management to ensure optimal growth and development.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-3">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Dermatology</h3>
-                                    <p class="fst-italic">Dermatology service that offers comprehensive skin health support, allowing users to receive expert advice, diagnosis, and personalized treatment plans for various skin conditions through interactive consultations with AI-powered dermatologists and access to a vast database of dermatological information.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-4">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                                    <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas
-                                        iure porro quis delectus</p>
-                                    <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam
-                                        necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in
-                                        consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a
-                                        laborum inventore</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-5">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                                    <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro
-                                        quia.</p>
-                                    <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae
-                                        ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet.
-                                        Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </section><!-- End Frequently Asked Questions Section -->
 
-        </div>
-    </section><!-- End Departments Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>The Frequently Asked Questions (FAQ) section that addresses common queries and concerns from users, providing comprehensive and informative answers to help them better understand the platform's services, features, and how to make the most of their personalized healthcare support..</p>
-            </div>
-
-            <div class="faq-list">
-                <ul>
-                    <li data-aos="fade-up">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                                                                       data-bs-target="#faq-list-1">What is CaresupportAI? <i class="bx bx-chevron-down icon-show"></i><i
-                                class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                            <p>
-                                CaresupportAI is a cutting-edge healthcare platform that utilizes interactive chatbots and advanced AI algorithms to deliver personalized healthcare support and guidance to users.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="100">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                                                       data-bs-target="#faq-list-2" class="collapsed">How does CaresupportAI work? <i class="bx bx-chevron-down icon-show"></i><i
-                                class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                CaresupportAI's chatbots engage in conversational interactions with users, analyzing their symptoms and health-related inputs. The platform employs decision tree classifiers to predict potential health issues and offers personalized recommendations.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="200">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                                                       data-bs-target="#faq-list-3" class="collapsed">Are the health predictions accurate?<i class="bx bx-chevron-down icon-show"></i><i
-                                class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                Yes, CaresupportAI's AI algorithms are trained on a vast dataset of symptoms and diseases, making the predictions highly accurate. However, it's essential to consult a healthcare professional for a definitive diagnosis.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="300">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                                                       data-bs-target="#faq-list-4" class="collapsed">Is my data secure with CaresupportAI?<i
-                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                               Absolutely! CaresupportAI takes data privacy and security seriously. All user data is encrypted and stored following industry-standard protocols to ensure maximum protection.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="400">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                                                       data-bs-target="#faq-list-5" class="collapsed">Can I get personalized healthcare recommendations? <i
-                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                               Yes, CaresupportAI provides personalized healthcare recommendations based on individual symptoms, medical history, and other relevant factors.
-                            </p>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-
-            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                    risus at semper.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                    minim.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                    dolore labore illum veniam.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster
-                                    veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
-                                    culpa fore nisi cillum quid.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Gallery</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-        </div>
-
-        <div class="container-fluid">
-            <div class="row g-0">
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="gallery-item">
-                        <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                            <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Contact</h2>
-                <p>For any inquiries, feedback, or support, please feel free to reach out to our caring team at CaresupportAI by filling out the contact form on our website or sending us an email at contact@caresupportai.com, and we will respond promptly to assist you with your healthcare needs.</p>
-            </div>
-        </div>
-
-        <div>
-            <iframe style="border:0; width: 100%; height: 350px;"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                    frameborder="0" allowfullscreen></iframe>
-        </div>
-
-        <div class="container">
-            <div class="row mt-5">
-
-                <div class="col-lg-4">
-                    <div class="info">
-                        <div class="address">
-                            <i class="bi bi-geo-alt"></i>
-                            <h4>Location:</h4>
-                            <p>85F2+JFP, RSM Nagar Gummidipoondi Taluk, Puduvoyal, Thiruvallur,<br>
-                        Tamil Nadu 601206</p>
-                        </div>
-
-                        <div class="email">
-                            <i class="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>info@CareSupport.com</p>
-                        </div>
-
-                        <div class="phone">
-                            <i class="bi bi-phone"></i>
-                            <h4>Call:</h4>
-                            <p>+91 7589 55488 55</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-lg-8 mt-5 mt-lg-0">
-
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                       required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="email" id="email"
-                                       placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                                   required>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                                      required></textarea>
-                        </div>
-                        <div class="my-3">
-                            <div class="loading">Loading!!!</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit">Message</button>
-                        </div>
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Contact Section -->
-
-</main><!-- End #main -->
+    </main><!-- End #main -->
 {% endblock %}
