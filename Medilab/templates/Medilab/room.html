@@ -3,15 +3,16 @@
 
 {% block content %}
 <style>
-.room {
+
+    .room {
   margin: 0 auto;
   max-width: 800px;
   padding: 0 20px;
+  background: linear-gradient(to bottom, #749BC2, #4682A9);
 }
 
 .live-chat {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
+  background: linear-gradient(to bottom, #749BC2, #4682A9);
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
@@ -19,7 +20,8 @@
 
 .darker {
   border-color: #ccc;
-  background-color: #ddd;
+  background-color: #F6F4EB;
+    border-radius: 5px;
 }
 
 .live-chat::after {
@@ -44,7 +46,7 @@
 
 .time-right {
   float: right;
-  color: #aaa;
+  color: #F6F4EB;
 }
 
 .time-left {
@@ -56,7 +58,7 @@
 
     <div class="room">
 <div class="heading" >
-<h2 style="display: flex;justify-content: center;align-items: center">Welcome To Live Chat with Doctors</h2>
+<h2 style="display: flex;justify-content: center;align-items: center"><strong>Welcome To Live Chat with Doctors</h2>
     <br>
 <h3 style="display: flex;justify-content: center;align-items: center">{{room}} - Room code </h3>
 </div>
@@ -82,7 +84,7 @@ setInterval(function(){
             $("#display").empty();
             for (var key in response.result)
             {
-                var temp="<div class='container darker'><b>"+response.result[key].user+"</b><p>"+response.result[key].values+"</p></div>";
+                var temp="<div class='container darker' style='font-weight: bold'><b>"+response.result[key].user+"</b><p class='message' style='font-weight: initial'>"+response.result[key].values+"</p></div>";
                 $("#display").append(temp);
             }
         },
@@ -98,18 +100,21 @@ setInterval(function(){
 <div class="live-chat">
     <style>
     input[type=text], select {
-    width: 100%;
+     font-family: "Poppins", sans-serif;
+     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #F6F4EB;
     }
 
     input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
+     font-family: "Poppins", sans-serif;
+        width: 100%;
+    background-color: #1D5D9B;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -119,7 +124,8 @@ setInterval(function(){
     }
 
     input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #DFF6FF;
+            color: black;
     }
 
     .room {

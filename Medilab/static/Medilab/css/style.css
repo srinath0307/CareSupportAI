@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Raleway", sans-serif;
+        font-family: "Poppins", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -777,9 +777,10 @@ section {
 }
 
 .about .video-box {
-    background: url("../img/about.jpg") center center no-repeat;
+    background: url("../img/departments-1.jpg") center center no-repeat;
     background-size: cover;
     min-height: 500px;
+    opacity: 0.8;
 }
 
 .about .play-btn {
