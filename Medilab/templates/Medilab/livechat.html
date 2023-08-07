@@ -2,8 +2,6 @@
 {% load static %}
 
 {% block content %}
-
-
     <style>
         .room {
             margin: 0 auto;
@@ -53,70 +51,103 @@
             float: left;
             color: #999;
         }
+
+        /* Adjust the input styles */
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        /* Adjust the room styling */
+        .room {
+            border-radius: 5px;
+            background-color: #9ac0e3;
+            padding: 20px;
+            margin: 100px auto 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+        }
+
+        .room h2 {
+            margin-top: 0;
+        }
+
+        /* Adjust the recent chat history */
+        .recent_history {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .recent_history h1 {
+            margin: 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+
+        }
+
+        .show-rooms {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .show-rooms:hover {
+            background-color: #f9f9f9;
+        }
     </style>
 
-<div class="room">
-    <div align="center">
-        <h2>Live Chat</h2>
+    <div class="room">
+        <div align="center">
+            <h2>Live Chat</h2>
+        </div>
+
+
+        <div class="live-chat">
+
+
+            <form id="post-form" method="POST" action="{% url 'checkview' %}">
+                {% csrf_token %}
+                <label>Enter your room code</label>
+                <input type="text" name="room_name" id="room_name" width="100px"/>
+                <label>Username</label>
+                <input type="text" name="username" id="username" width="100px"/>
+                <input type="submit" value="Enter Room">
+            </form>
+        </div>
     </div>
 
-
-    <div class="live-chat">
-        <style>
-            input[type=text], select {
-                width: 100%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                display: inline-block;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
-
-            input[type=submit] {
-                width: 100%;
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-            .room {
-                border-radius: 5px;
-                background-color: lavender;
-                padding: 20px;
-                margin-top: 250px;
-                margin-bottom: 100px;
-            }
-        </style>
-
-        <form id="post-form" method="POST" action="{% url 'checkview' %}">
-            {% csrf_token %}
-            <label>Enter your room code</label>
-            <input type="text" name="room_name" id="room_name" width="100px"/>
-            <label>Username</label>
-            <input type="text" name="username" id="username" width="100px"/>
-            <input type="submit" value="Enter Room">
-        </form>
-    </div>
-</div>
-
-<div class="recent_history">
-<h1>Recent Live Chat History</h1>
+    <div class="recent_history">
+        <h1>Recent Live Chat History </h1>
         {% for i in recent_rooms %}
             <a href="{% url 'room' i %}">
-            <div class="show-rooms">
+                <div class="show-rooms">
                     {{ i }}
-            </div>
+                </div>
             </a>
-    {% endfor %}
+        {% endfor %}
     </div>
 
     <script>
