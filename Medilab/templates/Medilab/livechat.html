@@ -4,15 +4,19 @@
 {% block content %}
     <style>
         .room {
+            font-family: "Poppins", sans-serif;
             margin: 0 auto;
             max-width: 800px;
             padding: 0 20px;
+            background: linear-gradient(to bottom, #4682A9, #749BC2);
         }
 
         .live-chat {
-            border: 2px solid #dedede;
+            font-family: "Poppins", sans-serif;
+            {#border: 2px solid #dedede;#}
+            background: linear-gradient(to bottom, #9ac0e3, #91C8E4);
             background-color: #f1f1f1;
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 10px;
             margin: 10px 0;
         }
@@ -54,18 +58,21 @@
 
         /* Adjust the input styles */
         input[type=text], select {
+            font-family: "Poppins", sans-serif;
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
+            background-color: #F6F4EB;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         input[type=submit] {
+            font-family: "Poppins", sans-serif;
             width: 100%;
-            background-color: #4CAF50;
+            background-color: #1D5D9B;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -75,13 +82,16 @@
         }
 
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: #DFF6FF;
+            color: black;
         }
 
         /* Adjust the room styling */
         .room {
+            font-family: "Poppins", sans-serif;
             border-radius: 5px;
-            background-color: #9ac0e3;
+            {#background-color: #9ac0e3;#}
+             background: linear-gradient(to bottom, #749BC2, #4682A9);
             padding: 20px;
             margin: 100px auto 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,28 +105,39 @@
 
         /* Adjust the recent chat history */
         .recent_history {
+            font-family: "Poppins", sans-serif;
             margin-top: 50px;
             text-align: center;
         }
 
         .recent_history h1 {
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 10px 0;
             border-bottom: 1px solid #ccc;
 
         }
 
-        .show-rooms {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            text-decoration: none;
-            color: #333;
-            display: block;
-        }
+       .show-rooms {
+    font-family: "Poppins", sans-serif;
+    padding: 5px 10px; /* Adjust padding to make the button smaller */
+    border: 1px solid #ccc; /* Add a border to create a box-like appearance */
+    text-decoration: none;
+    color: #333;
+    display: inline-block; /* Use inline-block to ensure elements appear in a row */
+    margin: 5px; /* Add some margin between the buttons */
+    border-radius: 4px; /* Add border-radius to round the corners */
+    background-color: #97bbff; /* Set a background color for the buttons */
+    transition: background-color 0.3s ease; /* Add a smooth transition on hover */
+    height: 100px;
+    width: 100px;
+}
 
-        .show-rooms:hover {
-            background-color: #f9f9f9;
-        }
+.show-rooms:hover {
+    background-color: #f9f9f9;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
     </style>
 
     <div class="room">
@@ -144,7 +165,7 @@
         {% for i in recent_rooms %}
             <a href="{% url 'room' i %}">
                 <div class="show-rooms">
-                    {{ i }}
+                    <h3 class="room-id" style="padding-top: 30px; ">{{ i }}</h3>
                 </div>
             </a>
         {% endfor %}
