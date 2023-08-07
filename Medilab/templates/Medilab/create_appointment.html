@@ -1,0 +1,66 @@
+{% extends 'Medilab/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- ======= Appointment Section ======= -->
+    <section id="appointment" class="appointment section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <br>
+                <br>
+                <br>
+                <h2>Make an Appointment</h2>
+                <p>CaresupportAI offers users the convenience of making medical appointments through an intuitive
+                    and user-friendly interface, connecting them with healthcare providers and enabling seamless
+                    scheduling for personalized consultations and treatments.</p>
+            </div>
+
+            <form action="{% url 'create_appointment' %}" method="POST" role="form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="user_name" class="form-control" id="name" placeholder="Your Name"
+                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="user_email" id="email" placeholder="Your Email"
+                               data-rule="email" data-msg="Please enter a valid email">
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="tel" class="form-control" name="user_phone_number" id="phone"
+                               placeholder="Your Phone"
+                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="datetime-local" name="appointment_date" class="form-control datepicker" id="date"
+                               placeholder="Appointment Date" data-rule="minlen:4"
+                               data-msg="Please enter at least 4 chars">
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="text" name="doctor_name" class="form-control" id="name" placeholder="Doctor Name"
+                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="text" name="disease_name" class="form-control" id="name" placeholder="Disease Name"
+                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-3">
+                        <textarea class="form-control" name="user_message" rows="5"
+                                  placeholder="Message "></textarea>
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" name="submit" id="signup" class="form-submit" value="Make Your Appointment"/>
+                </div>
+            </form>
+
+        </div>
+    </section><!-- End Appointment Section -->
+{% endblock %}
+

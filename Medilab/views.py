@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from Medilab.dataset.chatbot import calling, final_count
 from datetime import datetime
+from .models import Appointment
 
 
 # Create your views here.
@@ -17,11 +18,6 @@ def home(request):
 @login_required(login_url='/login')
 def services(request):
     return render(request, "Medilab/services.html")
-
-
-@login_required(login_url='/login')
-def book_an_appointment(request):
-    return render(request, "Medilab/book_an_appointment.html")
 
 
 @login_required(login_url='/login')
@@ -97,7 +93,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-
+@login_required(login_url='/login')
 def livechat(request):
     print(request.user)
     previous_history = LiveChat.objects.filter(user=request.user)
@@ -198,3 +194,25 @@ def getValue(request, room):
     room_details = Room.objects.get(name=room)
     result = LiveChat.objects.filter(room=room_details.name)
     return JsonResponse({"result": list(result.values())})
+
+def create_appointment(request):
+    if (request.method == 'POST'):
+        print("hello")
+        user_name = request.POST['user_name']
+        user_email = request.POST['user_email']
+        user_phone_number = request.POST['user_phone_number']
+        appointment_date = request.POST['appointment_date']
+        doctor_name = request.POST['doctor_name']
+        disease_name = request.POST['disease_name']
+        user_message = request.POST['user_message']
+
+        book_appointment = Appointment(user_name=user_name,user_email=user_email,user_phone_number=user_phone_number,appointment_date=appointment_date,doctor_name=doctor_name,disease_name=disease_name,user_message=user_message)
+        book_appointment.save()
+        messages.success(request, "Your appointment has been created successfully as per your request")
+        return redirect('/appointment_list')
+    else:
+        return render(request, 'Medilab/create_appointment.html')
+
+
+def appointment_list(request):
+    return render(request, 'Medilab/appointment_list.html')
