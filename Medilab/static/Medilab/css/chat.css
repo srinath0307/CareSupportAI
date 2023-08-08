@@ -9,14 +9,14 @@
 }
 
 .container {
-    background: linear-gradient(30deg, #D6D5A8, #03C988, #2C365D, #3E54AC);
-    animation: gradientAnimation 11s ease infinite;
+    background: url("../img/Chat.jpg") center center no-repeat; padding-top: 750px;
+    background-size: 1000px  ;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 10000px;
-    height: 800vh;
+
 }
 
 
@@ -200,10 +200,10 @@
     }
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/*@keyframes gradientAnimation {*/
+/*    0% { background-position: 0% 50%; }*/
+/*    50% { background-position: 100% 50%; }*/
+/*    100% { background-position: 0% 50%; }*/
 }
 
 
