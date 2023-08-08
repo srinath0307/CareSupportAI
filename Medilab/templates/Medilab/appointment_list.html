@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Appointment List</title>
-</head>
-<body>
-    <h1>Appointment List</h1>
+{% extends 'Medilab/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+<div style="margin-top:200px">
+    <h1>Appointment List</h1>
+    <ul>
+        {% for appointment in appointments %}
+            <li>{{ appointment.user_name }} - {{ appointment.appointment_date }}</li>
+            <li>{{ appointment.doctor_name }}</li>
+            <li>{{ appointment.disease_name }}</li>
+            <li>{{ appointment.user_message }}</li>
+            <br>
+        {% endfor %}
+    </ul>
+
+</div>
+{%  endblock %}
