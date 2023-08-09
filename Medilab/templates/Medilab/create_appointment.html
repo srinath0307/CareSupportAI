@@ -63,8 +63,31 @@
         </div>
     </section><!-- End Appointment Section -->
 
-    <div class="previous-appointments">
-        <a><a href="{% url 'appointment_list' %}">Click here to see your previous appointments</a></h2>
-    </div>
+  <div style="text-align: center;">
+    <style>
+        .button {
+            font-family: "Poppins", sans-serif;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #abc7f6;
+            color: #181d25;
+            text-decoration: none;
+            border: 2px solid black;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #8caeee;
+            color: black;
+        }
+    </style>
+
+    <a href="{% url 'appointment_list' %}" class="button">
+        Click here to see your previous appointments
+    </a>
+</div>
+
+
 {% endblock %}
 

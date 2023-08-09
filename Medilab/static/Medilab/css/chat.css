@@ -9,12 +9,12 @@
 }
 
 .container {
-    background: url("../img/Chat.jpg") center center no-repeat; padding-top: 750px;
-    background-size: 1000px  ;
+    background: url("../img/Chat.jpg") left center no-repeat; padding-top: 1000px;align-content: center;
+    background-size: contain  ;
     min-height: 500px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 
 }

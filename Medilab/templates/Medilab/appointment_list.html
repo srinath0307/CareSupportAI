@@ -2,17 +2,38 @@
 {% load static %}
 
 {% block content %}
-<div style="margin-top:200px">
-    <h1>Appointment List</h1>
-    <ul>
+<style>
+    .appointment-list {
+        font-family: "Poppins", sans-serif;
+        list-style: none;
+        padding-left: 10px;
+    }
+    .appointment-item {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #a8c7e7;
+    }
+    .center-content {
+        text-align: center;
+    }
+</style>
+
+<div class="center-content" style="margin-top: 200px">
+    <h1 style="font-weight: bold">Appointment List</h1>
+    <ul class="appointment-list">
         {% for appointment in appointments %}
-            <li>{{ appointment.user_name }} - {{ appointment.appointment_date }}</li>
-            <li>{{ appointment.doctor_name }}</li>
-            <li>{{ appointment.disease_name }}</li>
-            <li>{{ appointment.user_message }}</li>
-            <br>
+            <li class="appointment-item">
+                <strong>{{ appointment.user_name }} - {{ appointment.appointment_date }}</strong>
+                <br>
+                Doctor: {{ appointment.doctor_name }}
+                <br>
+                Disease: {{ appointment.disease_name }}
+                <br>
+                Message: {{ appointment.user_message }}
+            </li>
         {% endfor %}
     </ul>
-
 </div>
-{%  endblock %}
+{% endblock %}
