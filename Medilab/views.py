@@ -225,4 +225,5 @@ def create_appointment(request):
 
 
 def appointment_list(request):
-    return render(request, 'Medilab/appointment_list.html')
+    appointments = Appointment.objects.all()
+    return render(request, 'Medilab/appointment_list.html',{'appointments': appointments})
