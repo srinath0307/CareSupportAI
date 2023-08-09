@@ -14,7 +14,7 @@ class Registration(models.Model):
         return self.username
 
 class Message(models.Model):
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100,null=False)
     chat_type = models.CharField(max_length=100)
     #date_time = models.DateTimeField(default=datetime.now, blank=False)
     #date = models.DateTimeField(default=datetime.now, blank=True)
@@ -43,6 +43,15 @@ class Appointment(models.Model):
     doctor_name = models.CharField(max_length=100)
     disease_name = models.CharField(max_length=1000)
     user_message = models.TextField(max_length=100000)
+
+    def __str__(self):
+        return self.user_name
+
+class Contact(models.Model):
+    user_name = models.CharField(max_length=100)
+    email= models.EmailField(max_length=100)
+    subject = models.TextField(max_length=100000)
+    message = models.TextField(max_length=1000000)
 
     def __str__(self):
         return self.user_name

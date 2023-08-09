@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Registration, Message, Room, LiveChat
+from .models import Registration, Message, Room, LiveChat,Appointment,Contact
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from Medilab.dataset.chatbot import calling, final_count
 from datetime import datetime
-from .models import Appointment
-
 
 # Create your views here.
 
@@ -32,7 +30,18 @@ def chat(request):
 
 @login_required(login_url='/login')
 def contact(request):
-    return render(request, "Medilab/contact.html")
+    if(request.method=='POST'):
+        user_name = request.POST.get('user_name')
+        print(user_name)
+        email = request.POST.get('email')
+        print(email)
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        c = Contact(user_name=user_name, email=email, subject=subject, message=message)
+        c.save()
+        return redirect('/contact')
+    else:
+        return render(request,'Medilab/contact.html')
 
 
 def registration(request):
@@ -195,6 +204,7 @@ def getValue(request, room):
     result = LiveChat.objects.filter(room=room_details.name)
     return JsonResponse({"result": list(result.values())})
 
+@login_required(login_url='/login')
 def create_appointment(request):
     if (request.method == 'POST'):
         print("hello")
