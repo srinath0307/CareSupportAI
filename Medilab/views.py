@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Registration, Message, Room, LiveChat,Appointment,Contact
+from .models import Registration, Message, Room, LiveChat, Appointment, Contact
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from Medilab.dataset.chatbot import calling, final_count
 from datetime import datetime
+
 
 # Create your views here.
 
@@ -30,7 +31,7 @@ def chat(request):
 
 @login_required(login_url='/login')
 def contact(request):
-    if(request.method=='POST'):
+    if (request.method == 'POST'):
         user_name = request.POST.get('user_name')
         print(user_name)
         email = request.POST.get('email')
@@ -41,7 +42,7 @@ def contact(request):
         c.save()
         return redirect('/contact')
     else:
-        return render(request,'Medilab/contact.html')
+        return render(request, 'Medilab/contact.html')
 
 
 def registration(request):
@@ -102,6 +103,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+
 @login_required(login_url='/login')
 def livechat(request):
     print(request.user)
@@ -111,8 +113,8 @@ def livechat(request):
         if (data.room not in recent_rooms):
             recent_rooms.append(data.room)
     print(recent_rooms)
-    return render(request, "Medilab/livechat.html",{
-        'recent_rooms':recent_rooms
+    return render(request, "Medilab/livechat.html", {
+        'recent_rooms': recent_rooms
     })
 
 
@@ -204,6 +206,7 @@ def getValue(request, room):
     result = LiveChat.objects.filter(room=room_details.name)
     return JsonResponse({"result": list(result.values())})
 
+
 @login_required(login_url='/login')
 def create_appointment(request):
     if (request.method == 'POST'):
@@ -216,7 +219,9 @@ def create_appointment(request):
         disease_name = request.POST['disease_name']
         user_message = request.POST['user_message']
 
-        book_appointment = Appointment(user_name=user_name,user_email=user_email,user_phone_number=user_phone_number,appointment_date=appointment_date,doctor_name=doctor_name,disease_name=disease_name,user_message=user_message)
+        book_appointment = Appointment(user_name=user_name, user_email=user_email, user_phone_number=user_phone_number,
+                                       appointment_date=appointment_date, doctor_name=doctor_name,
+                                       disease_name=disease_name, user_message=user_message)
         book_appointment.save()
         messages.success(request, "Your appointment has been created successfully as per your request")
         return redirect('/appointment_list')
@@ -226,4 +231,4 @@ def create_appointment(request):
 
 def appointment_list(request):
     appointments = Appointment.objects.all()
-    return render(request, 'Medilab/appointment_list.html',{'appointments': appointments})
+    return render(request, 'Medilab/appointment_list.html', {'appointments': appointments})

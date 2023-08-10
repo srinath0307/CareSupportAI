@@ -16,7 +16,7 @@
 <div style="position: fixed; top: 0; right: 0; width: 100%; text-align: center; background-color: #c6dbfa; padding: 10px 0; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
     <h1>Welcome to Eve's Chat Room!</h1>
 </div>
-<div class="container">
+<div class="container" >
     {% csrf_token %}
     <div>
         <button class="chatbot-toggler">
@@ -44,6 +44,7 @@
             </ul>
             <div class="chat-input">
                 <textarea placeholder="Enter a message...." required id="text_context"></textarea>
+                <span id="refresh-btn" class="material-symbols-outlined" onclick="refreshChat()">refresh</span>
                 <span id="send-btn" class="material-symbols-outlined" onclick="send_message()">send</span>
             </div>
         </div>
@@ -96,6 +97,10 @@
         }
     })
 
+    function refreshChat() {
+        $("#chatbox").empty();
+    }
+
     function sending() {
         let temp;
         if (flag1 === 0) {
@@ -106,9 +111,20 @@
                     temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + que + "</p> </li><br>";
                     $("#chatbox").append(temp);
                 }
-                let ques = "Select the one you meant (0 - " + ((match.length) - 1) + ")";
-                temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + ques + "</p> </li><br>";
-            } else {
+                if(match.length === 0){
+                    temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Sorry, I don't have any information about this disease. Please try again with another symptom.</p> </li><br>";
+                    $("#chatbox").append(temp);
+                    answer.shift();
+                    question.shift();
+                    return;
+
+                }
+                else {
+                    let ques = "Select the one you meant (0 - " + ((match.length) - 1) + ")";
+                    temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + ques + "</p> </li><br>";
+                 }
+            }
+            else {
                 temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + question[0] + "</p> </li><br>";
             }
             $("#chatbox").append(temp);
@@ -118,7 +134,33 @@
             }
             question.shift();
         }
-    }
+     }
+
+{#function sending() {#}
+{#    if (flag1 === 0) {#}
+{#        if (answer.length === 1) {#}
+{#            let match = findMatches(answer[0], disease);#}
+{#            if (match.length === 0) {#}
+{#                let temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Sorry, I don't have any information about this disease. Please try again with another symptom.</p> </li><br>";#}
+{#                $("#chatbox").append(temp);#}
+{#                answer.shift();#}
+{#                question.shift();#}
+{#            } else {#}
+{#                let temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>Select the one you meant (0 - " + ((match.length) - 1) + ")</p> </li><br>";#}
+{#                $("#chatbox").append(temp);#}
+{#            }#}
+{#        } else {#}
+{#            let temp = "<li class='chat incoming'> <span class='material-symbols-outlined'>smart_toy</span> <p>" + question[0] + "</p> </li><br>";#}
+{#            $("#chatbox").append(temp);#}
+{#        }#}
+{#        if (question.length === 0) {#}
+{#            flag = 1;#}
+{#            flag1 = 1;#}
+{#        }#}
+{#        question.shift();#}
+{#    }#}
+{# }#}
+
 
 
 </script>
@@ -151,7 +193,8 @@
         if (!Array.isArray(disease)) {
             return [];
         }
-        const regex = new RegExp(input, 'i'); // 'i' flag makes it case-insensitive
+        const sanitizedInput = input.replace(/\s+/g, '_');
+        const regex = new RegExp(sanitizedInput, 'i'); // 'i' flag makes it case-insensitive
         const matches = disease.filter(str => regex.test(str));
         return matches;
     }
@@ -163,6 +206,11 @@
     let predicted_disease, description, precaution;
     let res = 0;
     let responses = [];
+
+    function scrollToBottom() {
+        const chatbox = document.getElementById("chatbox");
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
 
     function putSymptoms() {
         if (symptom.length === 0) {
@@ -193,6 +241,7 @@
         $("#chatbox").append(temp);
         symptom.shift();
         res = 1;
+        scrollToBottom();
     }
 
     function send_message1() {
@@ -201,7 +250,7 @@
 
     function send_message() {
         if (res === 1) {
-            let message = document.getElementById("text_context").value;
+            let message = document.getElementById("text_context").value.trim();
             temp = "<li class='chat outgoing' style='margin-left: 73%'> <p>" + message + "</p> <span class='material-symbols-outlined'>face</span> </li><br>";
             $("#chatbox").append(temp);
             responses.push(message);
@@ -254,6 +303,23 @@
             sending();
         }
         document.getElementById("text_context").value = "";
+        scrollToBottom();
     }
+    document.getElementById("text_context").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            send_message(); // Use the correct function name here
+            event.preventDefault(); // Prevent the default Enter key behavior
+        }
+    });
+    function toggleRefreshButton() {
+    const textArea = document.getElementById("text_context");
+    const refreshButton = document.getElementById("refresh-btn");
+
+    if (textArea.value.trim() !== "") {
+        refreshButton.style.display = "inline-block";
+    } else {
+        refreshButton.style.display = "none";
+    }
+}
 </script>
 </html>
